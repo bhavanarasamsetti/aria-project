@@ -1,24 +1,31 @@
 import streamlit as st
 from analyzer import generate_mock_report, read_file
 
-st.title("ARIA — Voltix Failure Analysis System")
+st.title("ARIA — Voltix Autonomous Monitoring System")
 
-st.write("Paste system logs or use sample data")
+st.caption("AI-powered automatic failure detection using IBM Bob")
 
-# Input box
-user_input = st.text_area("Enter system logs here")
+# Start monitoring button
+if st.button("Start Monitoring System"):
 
-# Button
-if st.button("Analyze"):
+    st.write("🟢 Monitoring system logs...")
 
-    if user_input.strip() == "":
-        # Use sample data if nothing entered
-        log_data = read_file("data/ev_battery_issue.txt")
+    # Read logs automatically (no user input)
+    log_data = read_file("data/ev_battery_issue.txt")
+
+    # Simple detection logic
+    if "ERROR" in log_data or "ALERT" in log_data:
+
+        st.error("🔴 Incident Detected!")
+        st.write("⚡ ARIA activated automatically...")
+
+        # Generate report
+        report = generate_mock_report(log_data)
+
+        st.subheader("🧠 ARIA INCIDENT REPORT")
+        st.text(report)
+
+        st.warning("📧 Alert sent to engineering team")
+
     else:
-        log_data = user_input
-
-    report = generate_mock_report(log_data)
-
-    st.subheader("🧠 ARIA INCIDENT REPORT")
-    st.text(report)
-    st.caption("AI-powered debugging using IBM Bob — from failure to fix in seconds")
+        st.success("✅ No issues detected. System running normally.")
