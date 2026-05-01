@@ -1,0 +1,49 @@
+Now let me generate the structured incident report in the exact format you requested:
+
+---
+
+## 🧠 ARIA INCIDENT REPORT - Voltix EV Battery Anomaly
+
+**Issue Summary:**
+Critical battery management system failure detected across Voltix EV fleet following firmware v2.2.0 deployment. Within 2 minutes of update, vehicles experienced sudden battery level drops (28%), temperature spikes (46°C), and charging efficiency degradation (28% reduction). Rapid propagation to 1,250 vehicles within 5 minutes indicates systematic firmware-induced failure.
+
+**Root Cause:**
+Firmware v2.2.0 introduced incompatible battery calibration algorithms for BMS-04 (Battery Management System module 04). The update modified State-of-Charge (SOC) calculation logic without proper calibration parameters, causing:
+- Incorrect battery level reporting (false 28% capacity loss)
+- Thermal management controller miscalculation (temperature spike to 46°C)
+- Charging efficiency algorithm mismatch (28% performance degradation)
+
+The calibration mismatch between firmware expectations and actual BMS-04 hardware configuration created cascading failures across battery monitoring, thermal control, and charging subsystems.
+
+**Impact:**
+- **Affected Vehicles**: 1,250 vehicles confirmed (10.4% of fleet), with all 12,000 vehicles at risk
+- **Severity**: CRITICAL
+- **Timeline**: Issue onset within 2 minutes of deployment, fleet-wide propagation within 5 minutes
+- **Safety Risk**: Elevated battery temperatures (46°C) approaching thermal management thresholds
+- **Customer Impact**: Range anxiety from false battery readings, degraded charging performance, potential vehicle stranding
+- **Business Impact**: Fleet-wide recall potential, customer trust erosion, regulatory scrutiny
+
+**Suggested Fix:**
+**Immediate (0-2 hours):**
+1. Emergency OTA rollback to firmware v2.1.x for all affected vehicles
+2. Halt v2.2.0 deployment to remaining 10,750 vehicles
+3. Issue remote command to reset BMS-04 calibration to factory defaults
+
+**Short-term (2-24 hours):**
+4. Deploy hotfix firmware v2.2.1 with corrected BMS-04 calibration parameters
+5. Implement staged rollout: 100 vehicles → 1,000 vehicles → full fleet
+6. Enhanced telemetry monitoring for battery metrics during rollout
+
+**Long-term (1-4 weeks):**
+7. Establish mandatory pre-deployment validation protocol for BMS compatibility
+8. Implement canary deployment strategy (1% fleet testing for 48 hours)
+9. Add automated fleet-wide anomaly detection with <5 minute response time
+10. Conduct root cause analysis review and update firmware QA procedures
+
+**Summary:**
+The incident was directly caused by firmware v2.2.0 deployment that lacked adequate BMS-04 calibration validation. The rapid onset (2 minutes) and fleet-wide propagation (1,250 vehicles in 5 minutes) indicate insufficient pre-deployment testing. The calibration mismatch created a cascading failure affecting battery monitoring, thermal management, and charging systems. Immediate rollback is required to prevent safety incidents and customer impact escalation.
+
+**Alert:**
+🚨 **CRITICAL BATTERY SYSTEM FAILURE** — Immediate engineering action required. Firmware v2.2.0 causing fleet-wide BMS-04 calibration failures with potential thermal safety implications. Emergency rollback protocol activated. Engineering team, fleet operations, and customer support must coordinate immediate response. Estimated resolution time: 2-4 hours for rollback, 24 hours for validated hotfix deployment.
+
+---
