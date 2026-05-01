@@ -1,0 +1,6 @@
+[2026-05-01 10:00] Firmware v2.2.0 deployed to Voltix EV fleet (12,000 vehicles)
+[2026-05-01 10:02] Battery level dropped from 82% to 54% unexpectedly
+[2026-05-01 10:03] Battery temperature increased to 46°C
+[2026-05-01 10:04] Charging efficiency reduced by 28%
+[ERROR] Battery calibration mismatch detected in module BMS-04
+[ALERT] 1,250 vehicles reporting similar issue within 5 minutes
