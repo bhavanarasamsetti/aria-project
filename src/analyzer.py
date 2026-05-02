@@ -3,29 +3,29 @@ def read_file(file_path):
         return file.read()
 
 
-def generate_mock_report(log_data):
-    return f"""
-🧠 ARIA INCIDENT REPORT
+def generate_report(log_data):
+    # 🔥 You can later replace this with IBM Bob
 
-🔴 Issue Summary:
-Battery anomaly detected after firmware update v2.2.0
+    return {
+        "summary": "Battery anomaly detected after firmware update v2.2.0",
 
-📍 Root Cause:
-Battery calibration mismatch in module BMS-04 introduced after firmware update
+        "root_cause": "Battery calibration mismatch in module BMS-04 introduced after firmware update",
 
-💥 Impact:
-Approximately 12,000 vehicles affected
-Severity: HIGH
+        "impact": {
+            "vehicles": 12000,
+            "severity": "CRITICAL"
+        },
 
-🛠 Suggested Fix:
-Patch battery calibration logic or rollback firmware version
+        "fix": "Rollback firmware or patch calibration logic",
 
-📊 Summary:
-Issue is directly linked to firmware deployment and lack of validation testing
+        "tests": [
+            "High-load battery stress test",
+            "Firmware compatibility test for BMS-04",
+            "Thermal response validation after OTA update"
+        ],
 
-🚨 Alert:
-Critical battery issue detected — immediate engineering action required
-"""
+        "alert": "🚨 Critical battery issue detected — immediate engineering action required"
+    }
 
 
 def analyze():
@@ -35,7 +35,7 @@ def analyze():
     print(log_data)
 
     print("\n=== ARIA OUTPUT ===\n")
-    report = generate_mock_report(log_data)
+    report = generate_report(log_data)
     print(report)
 
 
