@@ -32,7 +32,9 @@ app.mount("/static", StaticFiles(directory=FRONTEND_DIR), name="static")
 def home():
     return FileResponse(os.path.join(FRONTEND_DIR, "index.html"))
 
-
+@app.get("/dashboard")
+def dashboard():
+    return FileResponse(os.path.join(FRONTEND_DIR, "dashboard.html"))
 # API
 @app.get("/get-data")
 def get_data():
