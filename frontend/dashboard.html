@@ -4,6 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>ARIA — EV Monitoring System</title>
+<link rel="icon" href="data:,">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <style>
 /* ─── Reset & Base ─────────────────────────────────────────── */
@@ -525,7 +526,7 @@ html, body { height: 100%; font-family: var(--font-ui); background: var(--c-bg);
   Live Monitoring
 </div>
         <div class="topbar-ts" id="liveTime"></div>
-        <button class="topbar-btn">
+        <button class="topbar-btn" onclick="exportToPDF()">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
           Export
         </button>
@@ -1057,5 +1058,24 @@ function scrollToSection(id) {
   }
 }
 </script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+<script>
+function exportToPDF() {
+    const element = document.querySelector(".content");
+
+    const opt = {
+        margin: 0.5,
+        filename: 'ARIA_Incident_Report.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+    };
+
+    html2pdf().set(opt).from(element).save();
+}
+</script>
+
 </body>
 </html>
