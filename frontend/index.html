@@ -60,6 +60,7 @@
     /* ─── NAV ───────────────────────────────────────────────────── */
     .nav {
       position: fixed;
+      position: relative; 
       top: 0; left: 0; right: 0;
       z-index: 100;
       display: flex;
@@ -93,6 +94,9 @@
       display: flex;
       gap: 36px;
       list-style: none;
+       position: absolute;        
+  left: 50%;                 
+  transform: translateX(-50%); 
     }
 
     .nav__links a {
@@ -557,32 +561,7 @@
       z-index: 0;
     }
 
-    /* ─── DASHBOARD PREVIEW ─────────────────────────────────────── */
-    .preview-wrap {
-      background: linear-gradient(180deg, var(--black) 0%, var(--surface) 50%, var(--black) 100%);
-    }
-
-    .preview-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .preview-frame {
-      width: 100%;
-      max-width: 900px;
-      aspect-ratio: 16/9;
-      border-radius: var(--radius-xl);
-      border: 1px solid rgba(0,200,255,0.15);
-      background: #090e1c;
-      position: relative;
-      overflow: hidden;
-      box-shadow:
-        0 0 0 1px rgba(0,200,255,0.07),
-        0 40px 100px rgba(0,0,0,0.7),
-        0 0 60px rgba(0,200,255,0.06);
-    }
-
+   
     /* Fake UI inside preview */
     .preview-topbar {
       display: flex;
@@ -797,48 +776,7 @@
       background: var(--border);
     }
 
-    /* ─── STATS STRIP ───────────────────────────────────────────── */
-    .stats-strip {
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      background: var(--surface);
-    }
-
-    .stats-inner {
-      max-width: 1120px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      divide-x: 1px solid var(--border);
-    }
-
-    .stat-item {
-      padding: 48px 32px;
-      border-right: 1px solid var(--border);
-      text-align: center;
-    }
-
-    .stat-item:last-child { border-right: none; }
-
-    .stat-item__num {
-      font-family: var(--font-display);
-      font-size: 2.6rem;
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      background: linear-gradient(135deg, var(--cyan), var(--teal));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      line-height: 1;
-      margin-bottom: 8px;
-    }
-
-    .stat-item__label {
-      font-size: 0.82rem;
-      color: var(--text-secondary);
-      letter-spacing: 0.02em;
-    }
-
+   
     /* ─── FOOTER ────────────────────────────────────────────────── */
     .footer {
       border-top: 1px solid var(--border);
@@ -929,13 +867,13 @@
 
   <!-- ─── NAV ──────────────────────────────────────────────── -->
   <nav class="nav">
-    <a href="#" class="nav__logo">Volt<span>ix</span></a>
+   <a href="#" class="nav__logo">AR<span>IA</span></a>
     <ul class="nav__links">
       <li><a href="#features">Features</a></li>
       <li><a href="#flow">How It Works</a></li>
-      <li><a href="#dashboard">Dashboard</a></li>
+      
     </ul>
-    <button class="nav__cta">Request Demo</button>
+    
   </nav>
 
   <!-- ─── HERO ─────────────────────────────────────────────── -->
@@ -963,23 +901,11 @@
   Real-time anomaly detection, AI-driven root cause analysis,
   and guided recovery actions for EV engineering teams.
 </p>
-
-      <div class="hero__actions">
-        <a href="dashboard.html" class="btn btn--primary"></a>
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/>
-            <path d="M6 5l5 3-5 3V5z" fill="currentColor"/>
-          </svg>
-          View Live Dashboard
-        </a>
-        <a href="#features" class="btn btn--secondary">
-          Learn More
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </a>
+<a href="/static/dashboard.html" class="btn btn--primary">
+  Enter ARIA Platform
+</a>
       </div>
-    </div>
+       
 
     <div class="hero__scroll-hint">
       <span>Scroll</span>
@@ -989,36 +915,16 @@
     </div>
   </section>
 
-  <!-- ─── STATS STRIP ───────────────────────────────────────── -->
-  <div class="stats-strip">
-    <div class="stats-inner">
-      <div class="stat-item">
-        <div class="stat-item__num">99.7%</div>
-        <div class="stat-item__label">Anomaly Detection Accuracy</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-item__num">&lt;2ms</div>
-        <div class="stat-item__label">Average Response Latency</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-item__num">12k+</div>
-        <div class="stat-item__label">EVs Monitored Live</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-item__num">340×</div>
-        <div class="stat-item__label">Faster Than Manual Review</div>
-      </div>
-    </div>
-  </div>
+  
 
   <!-- ─── FEATURES ─────────────────────────────────────────── -->
   <section id="features">
     <div class="section" style="padding-bottom: 0;">
       <p class="section__label">Core Capabilities</p>
-      <h2 class="section__title">Everything your fleet needs<br/>to stay ahead of failure</h2>
+      <h2 class="section__title">Detect, analyze, and resolve EV failures faster<br/></h2>
       <p class="section__desc">
-        ARIA continuously watches every vehicle in your fleet —
-        diagnosing problems before drivers notice them.
+      ARIA analyzes real EV telemetry data to detect anomalies, identify root causes, and 
+      generate actionable engineering insights.
       </p>
     </div>
 
@@ -1031,9 +937,8 @@
             <div class="feature-card__icon">⚡</div>
             <h3 class="feature-card__title">Real-Time Anomaly Detection</h3>
             <p class="feature-card__desc">
-              ARIA processes thousands of telemetry signals per second — battery voltage, thermal patterns, motor torque — flagging deviations the moment they emerge.
-            </p>
-            <span class="feature-card__tag">Live Detection</span>
+              ARIA detects abnormal patterns in battery, temperature, and charging behavior from EV telemetry logs in real time.</p>
+            <span class="feature-card__tag">Real-Time Detection</span>
           </div>
 
           <div class="feature-card">
@@ -1041,19 +946,17 @@
             <div class="feature-card__icon">🔬</div>
             <h3 class="feature-card__title">AI-Powered Root Cause Analysis</h3>
             <p class="feature-card__desc">
-              When an anomaly is found, ARIA traces the causal chain — correlating historical patterns, fault trees, and fleet-wide data to pinpoint the exact origin.
-            </p>
-            <span class="feature-card__tag">Root Cause AI</span>
+              Uses AI (IBM Bob) to analyze fault patterns and identify the root cause of anomalies across fleet data.</p>
+            <span class="feature-card__tag">AI Analysis (IBM Bob)</span>
           </div>
 
           <div class="feature-card">
             <div class="feature-card__glow"></div>
             <div class="feature-card__icon">🛠</div>
-            <h3 class="feature-card__title">Automated Fix & Validation</h3>
+            <h3 class="feature-card__title">Fix Recommendations & Validation</h3>
             <p class="feature-card__desc">
-              ARIA doesn't just report — it acts. Applying OTA patches, recalibrating systems, and validating the outcome with post-fix telemetry to confirm full recovery.
-            </p>
-            <span class="feature-card__tag">Auto-Recovery</span>
+              ARIA provides recommended fixes and validation steps based on AI-generated analysis to support engineering decisions.</p>
+            <span class="feature-card__tag">Fix Recommendations</span>
           </div>
 
         </div>
@@ -1067,8 +970,7 @@
       <p class="section__label">System Architecture</p>
       <h2 class="section__title">How ARIA thinks<br/>and acts</h2>
       <p class="section__desc">
-        Four interlocked stages form a continuous feedback loop — 
-        from raw signal to resolved incident, automatically.
+       A structured pipeline that transforms raw telemetry into actionable engineering insights — from signal ingestion to incident response.
       </p>
 
       <div class="flow-steps">
@@ -1077,7 +979,7 @@
           <div class="flow-step__num">Stage 01</div>
           <div class="flow-step__circle">📡</div>
           <div class="flow-step__label">Detect</div>
-          <p class="flow-step__desc">Continuous multi-sensor telemetry ingestion and anomaly scoring.</p>
+          <p class="flow-step__desc">Continuously ingests live EV telemetry streams and flags abnormal signal deviations across the fleet.</p>
         </div>
 
         <div class="flow-arrow">
@@ -1090,7 +992,7 @@
           <div class="flow-step__num">Stage 02</div>
           <div class="flow-step__circle">🧠</div>
           <div class="flow-step__label">Analyze</div>
-          <p class="flow-step__desc">ARIA runs causal inference across the full fault graph.</p>
+          <p class="flow-step__desc">Telemetry data is processed through AI models (IBM Bob) to interpret fault patterns and identify failure origins.</p>
         </div>
 
         <div class="flow-arrow">
@@ -1102,8 +1004,8 @@
         <div class="flow-step">
           <div class="flow-step__num">Stage 03</div>
           <div class="flow-step__circle">⚙️</div>
-          <div class="flow-step__label">Fix</div>
-          <p class="flow-step__desc">Automated remediation — OTA patches or service triggers — applied with zero downtime.</p>
+          <div class="flow-step__label">Resolve</div>
+          <p class="flow-step__desc">Generates structured resolution guidance and validation steps based on analyzed failure scenarios.</p>
         </div>
 
         <div class="flow-arrow">
@@ -1116,102 +1018,22 @@
           <div class="flow-step__num">Stage 04</div>
           <div class="flow-step__circle">🔔</div>
           <div class="flow-step__label">Alert</div>
-          <p class="flow-step__desc">Structured post-incident reports sent to operators and fleet managers.</p>
+          <p class="flow-step__desc">Delivers actionable incident reports and insights to engineering teams for rapid response.</p>
         </div>
 
       </div>
     </div>
   </section>
 
-  <!-- ─── DASHBOARD PREVIEW ─────────────────────────────────── -->
-  <section class="preview-wrap" id="dashboard">
-    <div class="section">
-      <div class="preview-container">
-        <p class="section__label" style="text-align:center;">Live Interface</p>
-        <h2 class="section__title" style="text-align:center; margin-bottom:40px;">Your fleet, visible in every dimension</h2>
+ 
 
-        <div class="preview-frame">
-          <!-- Fake OS window chrome -->
-          <div class="preview-topbar">
-            <div class="preview-dot"></div>
-            <div class="preview-dot"></div>
-            <div class="preview-dot"></div>
-            <div class="preview-topbar-title">Voltix · ARIA Dashboard · Fleet Overview</div>
-          </div>
 
-          <div class="preview-body">
-            <!-- Sidebar -->
-            <div class="preview-sidebar">
-              <div class="preview-nav-item"></div>
-              <div class="preview-nav-item"></div>
-              <div class="preview-nav-item"></div>
-              <div class="preview-nav-item"></div>
-              <div class="preview-nav-item"></div>
-            </div>
-
-            <!-- Main area -->
-            <div class="preview-main">
-              <!-- Stat cards -->
-              <div class="preview-stats">
-                <div class="preview-stat-card"></div>
-                <div class="preview-stat-card"></div>
-                <div class="preview-stat-card"></div>
-                <div class="preview-stat-card"></div>
-              </div>
-
-              <!-- Chart -->
-              <div class="preview-chart">
-                <svg class="preview-chart-canvas" viewBox="0 0 700 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-                  <defs>
-                    <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stop-color="#00c8ff" stop-opacity="0.2"/>
-                      <stop offset="100%" stop-color="#00c8ff" stop-opacity="0"/>
-                    </linearGradient>
-                  </defs>
-                  <path class="chart-area" d="M0 80 C60 70 100 60 160 50 C220 40 260 55 320 45 C380 35 420 20 480 30 C540 40 580 25 700 15 L700 120 L0 120 Z"/>
-                  <path class="chart-line" d="M0 80 C60 70 100 60 160 50 C220 40 260 55 320 45 C380 35 420 20 480 30 C540 40 580 25 700 15"/>
-                </svg>
-              </div>
-
-              <!-- Bottom row -->
-              <div class="preview-bottom">
-                <div class="preview-table">
-                  <div class="preview-row"></div>
-                  <div class="preview-row"></div>
-                  <div class="preview-row"></div>
-                  <div class="preview-row"></div>
-                  <div class="preview-row"></div>
-                </div>
-
-                <div class="preview-alerts">
-                  <div class="preview-alert-item">
-                    <div class="preview-alert-dot"></div>
-                    <div class="preview-alert-bar"></div>
-                  </div>
-                  <div class="preview-alert-item">
-                    <div class="preview-alert-dot"></div>
-                    <div class="preview-alert-bar"></div>
-                  </div>
-                  <div class="preview-alert-item">
-                    <div class="preview-alert-dot"></div>
-                    <div class="preview-alert-bar"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <p class="preview-caption">Real-time monitoring interface powered by ARIA</p>
-      </div>
-    </div>
-  </section>
 
   <!-- ─── FOOTER ────────────────────────────────────────────── -->
   <footer class="footer">
     <div class="footer__inner">
-      <div class="footer__logo">Volt<span>ix</span></div>
-      <p class="footer__copy">Voltix © 2026 · Intelligent EV Fleet Monitoring</p>
+      <div class="footer__logo">ARIA></div>
+      <p class="footer__copy">ARIA © 2026 · EV Systems Monitoring Platform</p>
       <div class="footer__aria">
         <span class="footer__aria-dot"></span>
         Powered by ARIA AI
