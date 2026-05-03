@@ -11,7 +11,7 @@ from src.analyzer import generate_report, read_file
 
 app = FastAPI()
 
-# CORS
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -20,14 +20,14 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# 🔥 Serve frontend folder
+
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 FRONTEND_DIR = os.path.join(BASE_DIR, "frontend")
 
 app.mount("/static", StaticFiles(directory=FRONTEND_DIR), name="static")
 
 
-# 🔥 Serve index.html
+
 @app.get("/")
 def home():
     return FileResponse(os.path.join(FRONTEND_DIR, "index.html"))

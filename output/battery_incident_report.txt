@@ -2,7 +2,7 @@ Now let me generate the structured incident report in the exact format you reque
 
 ---
 
-## 🧠 ARIA INCIDENT REPORT - Voltix EV Battery Anomaly
+## ARIA INCIDENT REPORT - Voltix EV Battery Anomaly
 
 **Issue Summary:**
 Critical battery management system failure detected across Voltix EV fleet following firmware v2.2.0 deployment. Within 2 minutes of update, vehicles experienced sudden battery level drops (28%), temperature spikes (46°C), and charging efficiency degradation (28% reduction). Rapid propagation to 1,250 vehicles within 5 minutes indicates systematic firmware-induced failure.
@@ -44,6 +44,6 @@ The calibration mismatch between firmware expectations and actual BMS-04 hardwar
 The incident was directly caused by firmware v2.2.0 deployment that lacked adequate BMS-04 calibration validation. The rapid onset (2 minutes) and fleet-wide propagation (1,250 vehicles in 5 minutes) indicate insufficient pre-deployment testing. The calibration mismatch created a cascading failure affecting battery monitoring, thermal management, and charging systems. Immediate rollback is required to prevent safety incidents and customer impact escalation.
 
 **Alert:**
-🚨 **CRITICAL BATTERY SYSTEM FAILURE** — Immediate engineering action required. Firmware v2.2.0 causing fleet-wide BMS-04 calibration failures with potential thermal safety implications. Emergency rollback protocol activated. Engineering team, fleet operations, and customer support must coordinate immediate response. Estimated resolution time: 2-4 hours for rollback, 24 hours for validated hotfix deployment.
+**CRITICAL BATTERY SYSTEM FAILURE** — Immediate engineering action required. Firmware v2.2.0 causing fleet-wide BMS-04 calibration failures with potential thermal safety implications. Emergency rollback protocol activated. Engineering team, fleet operations, and customer support must coordinate immediate response. Estimated resolution time: 2-4 hours for rollback, 24 hours for validated hotfix deployment.
 
 ---
