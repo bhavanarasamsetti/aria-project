@@ -397,14 +397,6 @@ html, body {
   max-width: 100%;
 }
 
-.anomaly-icon-wrap {
-  width: 36px; height: 36px; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
-}
-.anomaly-icon-wrap svg { width: 18px; height: 18px; fill: #fff; }
-.anomaly-main .a-title { font-size: 14px; font-weight: 600; color: var(--c-red-text); margin-bottom: 3px; }
-.anomaly-main .a-desc { font-size: 12.5px; color: #b91c1c; line-height: 1.6; }
 
 /* ─── AI Section ───────────────────────────────────────────── */
 .ai-tag {
@@ -500,7 +492,7 @@ html, body {
 .main::-webkit-scrollbar-track { background: transparent; }
 .main::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 20px; }
 
-/* 🔥 Fix & Validation Premium UI */
+
 .fix-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -558,7 +550,6 @@ html, body {
 
 <div class="shell">
 
-  <!-- ░░ SIDEBAR ░░ -->
   <aside class="sidebar">
     <div class="sidebar-brand">
       <div class="brand-badge">
@@ -610,7 +601,7 @@ html, body {
    
   </aside>
 
-  <!-- ░░ MAIN ░░ -->
+
   <main class="main">
 
     <!-- A. Header / Topbar -->
@@ -627,10 +618,7 @@ html, body {
   Live Monitoring
 </div>
         <div class="topbar-ts" id="liveTime"></div>
-        <button class="topbar-btn" onclick="exportToPDF()">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-          Export
-        </button>
+        
       </div>
     </div>
 
@@ -853,9 +841,7 @@ html, body {
         </div>
         <div class="card-body">
           <div class="anomaly-bar">
-            <div class="anomaly-icon-wrap">
-              
-            </div>
+            
             <div class="anomaly-main">
   <div class="a-title">Anomaly detected at 10:01 AM</div>
 
@@ -882,10 +868,10 @@ html, body {
   Affected: <strong>1,250 vehicles (initial impact) </strong> · Fault: <strong>0x4C</strong>
 </div>
 </div>
-  </div> <!-- ✅ CLOSE anomaly-bar -->
+  </div> 
 
-  </div> <!-- ✅ CLOSE card-body -->
-</div> <!-- ✅ CLOSE card -->
+  </div> 
+</div>
       <!-- E. AI Analysis -->
       <div class="card" id="analysis">
         <div class="card-head">
@@ -933,7 +919,7 @@ html, body {
         </div>
       
 
-    <!-- F. FIX & VALIDATION (IBM BOB) -->
+    
 <div class="card" id="fix">
   <div class="card-head">
     <span class="card-head-label">Fix & Validation</span>
@@ -947,7 +933,6 @@ html, body {
       Bob Fix & Test Plan
     </div>
 
-    <!-- 🔥 CLEAN GRID -->
     <div class="fix-grid">
 
       <div class="fix-box">
@@ -978,7 +963,7 @@ html, body {
       color:#14532d;
       font-weight:500;
     ">
-      ✅ System validated · Ready for deployment
+      System validated · Ready for deployment
     </div>
 
   </div>
@@ -1012,7 +997,7 @@ html, body {
 
 <script>
 
-// 🔥 CONNECT BACKEND
+
 
 
 async function loadData() {
@@ -1021,7 +1006,7 @@ async function loadData() {
         const res = await fetch("http://127.0.0.1:8000/get-data");
         const data = await res.json();
 
-        console.log("✅ API DATA RECEIVED:", data);
+        console.log("API DATA RECEIVED:", data);
         console.log("Vehicles:", data.vehicles);
         console.log("Drop:", data.drop);
         console.log("Temp:", data.temp);
@@ -1031,19 +1016,19 @@ document.getElementById("vehicles").innerText = data.vehicles || "1250";
 document.getElementById("batteryDrop").innerText = data.drop || "-38%";
 document.getElementById("temp").innerText = data.temp || "46°C";
 
-// ✅ NEW AI SECTION
+
 document.getElementById("rootCause").innerText = data.root_cause;
 document.getElementById("impact").innerText = data.vehicles + " vehicles affected";
 document.getElementById("fix").innerText = data.fix;
 document.getElementById("alert").innerText = data.alert;
 
-// ✅ ALERT (correct placement)
+
         document.getElementById("alertBox").innerHTML = `
           <div class="al-title">${data.alert}</div>
           <div class="al-sub">Triggered by ARIA · Action initiated automatically</div>
         `;
 
-// ✅ FIX & TEST (Bob output)
+
 document.getElementById("fixSummary").innerText =
   "Real-time monitoring + BMS validation + Canary deployment + Auto rollback";
 
@@ -1077,7 +1062,7 @@ const data = [
   {x:495, y:32, time:"09:45", val:"80%"},
   {x:605, y:34, time:"09:55", val:"80%"},
 
-  // 🔥 smoother drop (not instant)
+ 
   {x:680, y:50, time:"09:59", val:"65%"},
   {x:715, y:75, time:"10:01", val:"42%"},
 
@@ -1090,7 +1075,7 @@ svg.addEventListener("mousemove", (e) => {
   const rect = svg.getBoundingClientRect();
   const mouseX = e.clientX - rect.left;
 
-  // 🔥 find closest point smoothly
+  
   let closest = data[0];
   let minDist = Math.abs(mouseX - closest.x);
 
@@ -1102,7 +1087,7 @@ svg.addEventListener("mousemove", (e) => {
     }
   }
 
-  // 🔥 smooth movement (no jump)
+
   dot.setAttribute("cx", closest.x);
   dot.setAttribute("cy", closest.y);
   dot.style.display = "block";
@@ -1127,7 +1112,7 @@ svg.addEventListener("mouseleave", () => {
   line.style.display = "none";
 });
 </script>
-<!-- 🔥 ADD HERE -->
+
 <script>
 function updateTime() {
   const now = new Date();
@@ -1142,12 +1127,12 @@ function updateTime() {
   
   let hours = now.getHours();
   let minutes = now.getMinutes();
-  let seconds = now.getSeconds();   // 👈 BONUS
+  let seconds = now.getSeconds();   
   let ampm = hours >= 12 ? 'PM' : 'AM';
 
   hours = hours % 12 || 12;
   minutes = minutes.toString().padStart(2, '0');
-  seconds = seconds.toString().padStart(2, '0'); // 👈 BONUS
+  seconds = seconds.toString().padStart(2, '0'); 
 
   const timeString = `${date} · ${hours}:${minutes}:${seconds} ${ampm}`;
 
@@ -1174,22 +1159,6 @@ function scrollToSection(id) {
 </script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-
-<script>
-function exportToPDF() {
-    const element = document.querySelector(".content");
-
-    const opt = {
-        margin: 0.5,
-        filename: 'ARIA_Incident_Report.pdf',
-        image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: { scale: 2 },
-        jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
-    };
-
-    html2pdf().set(opt).from(element).save();
-}
-</script>
 
 
     
