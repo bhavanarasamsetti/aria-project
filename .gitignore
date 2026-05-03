@@ -1,0 +1,39 @@
+# Environment variables (contains API keys - NEVER commit this!)
+.env
+
+# Python virtual environment
+.venv/
+venv/
+env/
+ENV/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# IDE settings
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Output files
+output/*.pdf
+output/*.txt
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+
+# Made with Bob
