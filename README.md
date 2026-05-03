@@ -132,8 +132,10 @@ Impact
 ARIA reduces failure detection and analysis time from hours to under two minutes, enabling faster response, improved safety, and increased reliability in EV fleet operations.
 
 Authors
-Bhavana Rasamsetti — AI Analysis, Root Cause Engine, Dashboard 
-Deepika Rasamsetti — Fix Recommendations, Test Generation, Validation 
+Bhavana Rasamsetti — AI Analysis, Root Cause Engine, Dashboard.
+
+Deepika Rasamsetti — Fix Recommendations, Test Generation, Validation.
+
 Note
 
 API keys and sensitive credentials are not included in this repository for security reasons.
