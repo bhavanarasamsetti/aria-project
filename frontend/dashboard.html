@@ -916,14 +916,18 @@ html, body { height: 100%; font-family: var(--font-ui); background: var(--c-bg);
 
 async function loadData() {
     try {
+        console.log("🔄 Fetching data from API...");
         const res = await fetch("http://127.0.0.1:8000/get-data");
         const data = await res.json();
 
-        console.log("API DATA:", data);
+        console.log("✅ API DATA RECEIVED:", data);
+        console.log("Vehicles:", data.vehicles);
+        console.log("Drop:", data.drop);
+        console.log("Temp:", data.temp);
 
        // KPI
 document.getElementById("vehicles").innerText = data.vehicles || "1250";
-document.getElementById("batteryDrop").innerText = data.drop || "-28%";
+document.getElementById("batteryDrop").innerText = data.drop || "-38%";
 document.getElementById("temp").innerText = data.temp || "46°C";
 
 // ✅ NEW AI SECTION
