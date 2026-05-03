@@ -109,6 +109,20 @@ If API is disabled:
 
 The system will simulate realistic outputs
 You can still view anomaly detection, analysis, and alerts
+## Screenshots
+
+### Landing Page
+![Landing Page](assets/landingpage.png)
+
+### IBM Bob AI Analysis
+![Analysis](assets/analysis.png)
+
+### Fix & Validation
+![Fix](assets/fix.png)
+
+### Alert Status
+![Alert](assets/alert.png)
+
 Demo
 
 A demo video (≤ 3 minutes) showcasing the problem, solution, and system workflow is included in the submission.
