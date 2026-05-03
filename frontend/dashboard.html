@@ -11,34 +11,34 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --c-bg:         #f4f6f9;
+  --c-bg:         #f8f9fb;
   --c-surface:    #ffffff;
-  --c-sidebar:    #0f1c2e;
-  --c-sidebar-h:  #162843;
-  --c-blue-1:     #1a6fc4;
-  --c-blue-2:     #e8f1fb;
-  --c-blue-3:     #d0e4f7;
-  --c-blue-4:     #b8d4f0;
-  --c-text-h:     #0d1b2a;
-  --c-text-b:     #374151;
-  --c-text-m:     #6b7280;
-  --c-text-s:     #9ca3af;
-  --c-border:     #e5e9ef;
+  --c-sidebar:    #0a1628;
+  --c-sidebar-h:  #152238;
+  --c-blue-1:     #2563eb;
+  --c-blue-2:     #eff6ff;
+  --c-blue-3:     #dbeafe;
+  --c-blue-4:     #bfdbfe;
+  --c-text-h:     #0f172a;
+  --c-text-b:     #334155;
+  --c-text-m:     #64748b;
+  --c-text-s:     #94a3b8;
+  --c-border:     #e2e8f0;
   --c-red-bg:     #fef2f2;
   --c-red-border: #fecaca;
   --c-red-text:   #991b1b;
-  --c-red-accent: #dc2626;
+  --c-red-accent: #ef4444;
   --c-amber-bg:   #fffbeb;
   --c-amber-text: #92400e;
-  --c-amber-acc:  #d97706;
+  --c-amber-acc:  #f59e0b;
   --c-green-bg:   #f0fdf4;
   --c-green-text: #14532d;
-  --c-green-acc:  #16a34a;
-  --c-shadow-sm:  0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
-  --c-shadow-md:  0 4px 12px rgba(0,0,0,.07), 0 2px 4px rgba(0,0,0,.04);
-  --radius-sm:    6px;
-  --radius-md:    10px;
-  --radius-lg:    14px;
+  --c-green-acc:  #10b981;
+  --c-shadow-sm:  0 1px 2px rgba(0,0,0,.04), 0 1px 3px rgba(0,0,0,.02);
+  --c-shadow-md:  0 4px 6px rgba(0,0,0,.05), 0 2px 4px rgba(0,0,0,.03);
+  --radius-sm:    8px;
+  --radius-md:    12px;
+  --radius-lg:    16px;
   --sidebar-w:    220px;
   --font-ui:      'DM Sans', sans-serif;
   --font-mono:    'DM Mono', monospace;
@@ -190,8 +190,14 @@ html, body { height: 100%; font-family: var(--font-ui); background: var(--c-bg);
   background: var(--c-surface);
   border: 1px solid var(--c-border);
   border-radius: var(--radius-lg);
-  box-shadow: var(--c-shadow-sm);
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03), 0 1px 2px rgba(15, 23, 42, 0.02);
   overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:hover {
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08), 0 4px 10px rgba(15, 23, 42, 0.04);
+  transform: translateY(-2px);
 }
 .card-head {
   padding: 13px 20px;
@@ -302,20 +308,52 @@ html, body { height: 100%; font-family: var(--font-ui); background: var(--c-bg);
 
 /* ─── Chart ────────────────────────────────────────────────── */
 .chart-container { position: relative; }
-.chart-legend { display: flex; gap: 18px; margin-bottom: 14px; }
-.leg-item { display: flex; align-items: center; gap: 6px; font-size: 11.5px; color: var(--c-text-m); }
-.leg-line { width: 20px; height: 2px; border-radius: 2px; }
-.leg-dash { width: 20px; height: 0; border-top: 2px dashed var(--c-red-accent); }
+.chart-legend {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 16px;
+  padding: 12px 16px;
+  background: linear-gradient(to right, #fafbfc 0%, #ffffff 100%);
+  border-radius: 8px;
+  border: 1px solid #f0f1f3;
+}
+
+.leg-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11.5px;
+  color: var(--c-text-m);
+  font-weight: 500;
+}
+
+.leg-line {
+  width: 24px;
+  height: 3px;
+  border-radius: 3px;
+}
+
+.leg-dash {
+  width: 24px;
+  height: 0;
+  border-top: 2px dashed var(--c-red-accent);
+  opacity: 0.7;
+}
 .chart-canvas {
   width: 100%;
   height: 170px;
-  background: var(--c-bg);
+  background: linear-gradient(to bottom, #fafbfc 0%, #ffffff 100%);
   border-radius: var(--radius-md);
-  position: relative; /* ✅ ADD THIS */
+  position: relative;
   overflow: hidden;
+  border: 1px solid #f0f1f3;
 }
-/* SVG chart */
-.chart-svg { width: 100%; height: 100%; display: block; }
+
+.chart-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
 .chart-xaxis {
   display: flex; justify-content: space-between;
   padding: 6px 0 0;
