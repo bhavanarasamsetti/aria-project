@@ -77,7 +77,7 @@ Python 3.10+
 pip (Python package manager)
 Git (optional)
 1. Clone the Repository
-git clone https://github.com/your-username/aria-project.git
+git clone https://github.com/bhavanarasamsetti/aria-project.git
 cd aria-project
 2. Create Virtual Environment (Recommended)
 python3 -m venv .venv
