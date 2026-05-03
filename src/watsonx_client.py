@@ -34,11 +34,11 @@ def generate_text(prompt):
                 "temperature": 0.7,
                 "stop_sequences": []
             },
-            "model_id": os.getenv("WATSONX_MODEL_ID", "meta-llama/llama-2-13b-chat"),
+            "model_id": os.getenv("WATSONX_MODEL_ID", "ibm/granite-13b-instruct-v2"),
             "project_id": project_id
         }
         
-        response = requests.post(url, headers=headers, json=body, timeout=60)
+        response = requests.post(url, headers=headers, json=body, timeout=120)
         response.raise_for_status()
         
         result = response.json()
