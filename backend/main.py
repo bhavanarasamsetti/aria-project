@@ -62,6 +62,7 @@ def get_data():
         "temp": "46°C"
     }
 
+
 # PDF EXPORT (CLEAN PROFESSIONAL REPORT)
 @app.get("/download-report")
 def download_report():
@@ -174,3 +175,26 @@ def download_report():
     doc.build(story)
 
     return FileResponse(file_path, filename="ARIA_Full_Report.pdf")
+
+@app.post("/analyze-custom")
+async def analyze_custom(data: dict):
+    """Analyze custom log data from text input"""
+    try:
+        log_data = data.get("logs", "")
+        if not log_data:
+            return {"error": "No log data provided"}
+        
+        report = generate_report(log_data)
+        
+        return {
+            "vehicles": report["impact"]["vehicles"],
+            "severity": report["impact"]["severity"],
+            "summary": report["summary"],
+            "root_cause": report["root_cause"],
+            "fix": report["fix"],
+            "tests": report["tests"],
+            "alert": report["alert"]
+        }
+    except Exception as e:
+        return {"error": str(e)}
+
