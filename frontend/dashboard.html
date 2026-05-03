@@ -216,11 +216,45 @@ html, body { height: 100%; font-family: var(--font-ui); background: var(--c-bg);
   padding: 18px 20px 16px;
   position: relative;
   overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.kpi-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0,0,0,.15), 0 8px 16px rgba(0,0,0,.1);
+  border-color: transparent;
+}
+
+.kpi-card.k-red:hover {
+  box-shadow: 0 20px 40px rgba(220, 38, 38, 0.25), 0 8px 16px rgba(220, 38, 38, 0.15);
+  background: linear-gradient(135deg, #ffffff 0%, #fef2f2 100%);
+}
+
+.kpi-card.k-amber:hover {
+  box-shadow: 0 20px 40px rgba(217, 119, 6, 0.25), 0 8px 16px rgba(217, 119, 6, 0.15);
+  background: linear-gradient(135deg, #ffffff 0%, #fffbeb 100%);
+}
+
+.kpi-card.k-blue:hover {
+  box-shadow: 0 20px 40px rgba(26, 111, 196, 0.25), 0 8px 16px rgba(26, 111, 196, 0.15);
+  background: linear-gradient(135deg, #ffffff 0%, #e8f1fb 100%);
+}
+
+.kpi-card.k-neutral:hover {
+  box-shadow: 0 20px 40px rgba(107, 114, 128, 0.25), 0 8px 16px rgba(107, 114, 128, 0.15);
+  background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
 }
 .kpi-card::before {
   content: '';
   position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+.kpi-card:hover::before {
+  height: 5px;
+}
+
 .kpi-card.k-red::before   { background: linear-gradient(90deg, var(--c-red-accent), #f87171); }
 .kpi-card.k-amber::before { background: linear-gradient(90deg, var(--c-amber-acc), #fbbf24); }
 .kpi-card.k-blue::before  { background: linear-gradient(90deg, var(--c-blue-1), #60a5fa); }
@@ -231,7 +265,20 @@ html, body { height: 100%; font-family: var(--font-ui); background: var(--c-bg);
   text-transform: uppercase; letter-spacing: .08em;
   margin-bottom: 10px;
 }
-.kpi-value { font-size: 28px; font-weight: 600; color: var(--c-text-h); line-height: 1; margin-bottom: 8px; }
+.kpi-value {
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--c-text-h);
+  line-height: 1;
+  margin-bottom: 8px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.kpi-card:hover .kpi-value {
+  transform: scale(1.08);
+  letter-spacing: 0.02em;
+}
+
 .kpi-card.k-red   .kpi-value { color: var(--c-red-accent); }
 .kpi-card.k-amber .kpi-value { color: var(--c-amber-acc); }
 .kpi-delta {
@@ -243,7 +290,14 @@ html, body { height: 100%; font-family: var(--font-ui); background: var(--c-bg);
 .kpi-icon {
   position: absolute; bottom: 14px; right: 16px;
   opacity: .07;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+.kpi-card:hover .kpi-icon {
+  opacity: .15;
+  transform: scale(1.15) rotate(5deg);
+}
+
 .kpi-icon svg { width: 42px; height: 42px; }
 
 /* ─── Chart ────────────────────────────────────────────────── */
