@@ -595,7 +595,7 @@ html, body { height: 100%; font-family: var(--font-ui); background: var(--c-bg);
       </div>
 
       <!-- C. Graph Section -->
-      <<div class="card" id="graph">
+      <div class="card" id="graph">
         <div class="card-head">
           <span class="card-head-label">Battery Behavior
             <span>— Incident Timeline (Pre vs Post Failure)</span>
@@ -893,14 +893,13 @@ html, body { height: 100%; font-family: var(--font-ui); background: var(--c-bg);
             <div class="alert-icon-wrap">
               <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
             </div>
-            <div class="alert-text">
-              <div class="al-title">🚨 Critical Alert Dispatched</div>
-              <div class="al-sub">Immediate action required — firmware rollback initiated </div>
-            </div>
+            <div class="alert-text" id="alertBox">
+  <div class="al-title">Loading alert...</div>
+  <div class="al-sub">Waiting for ARIA response...</div>
+</div>
             <div class="alert-meta">
-              10:02:05 AM<br>
-              <span style="font-size:10px;color:#15803d;">2 min ago</span>
-            </div>
+  10:02:05 AM · Incident Logged
+</div>
           </div>
         </div>
       </div>
@@ -932,6 +931,12 @@ document.getElementById("rootCause").innerText = data.root_cause;
 document.getElementById("impact").innerText = data.vehicles + " vehicles affected";
 document.getElementById("fix").innerText = data.fix;
 document.getElementById("alert").innerText = data.alert;
+
+// ✅ ALERT (correct placement)
+        document.getElementById("alertBox").innerHTML = `
+          <div class="al-title">${data.alert}</div>
+          <div class="al-sub">Triggered by ARIA · Action initiated automatically</div>
+        `;
 
 // ✅ FIX & TEST (Bob output)
 document.getElementById("fixSummary").innerText =
