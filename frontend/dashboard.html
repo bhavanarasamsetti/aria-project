@@ -504,6 +504,36 @@ html, body { height: 100%; font-family: var(--font-ui); background: var(--c-bg);
   transition: all 0.1s ease;
 }
 
+/* MINI AI */
+.mini-ai {
+  margin-top: 14px;
+  padding: 12px;
+  background: #f8fafc;
+  border: 1px solid #e5e9ef;
+  border-radius: 10px;
+}
+
+.mini-ai textarea {
+  width: 100%;
+  height: 70px;
+  border-radius: 8px;
+  border: 1px solid #e5e9ef;
+  padding: 8px;
+  font-size: 12px;
+}
+
+.mini-ai button {
+  margin-top: 8px;
+  width: 100%;
+  padding: 8px;
+  border-radius: 8px;
+  border: none;
+  background: #1a6fc4;
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
 </style>
 </head>
 <body>
@@ -957,7 +987,23 @@ html, body { height: 100%; font-family: var(--font-ui); background: var(--c-bg);
           </div>
         </div>
       </div>
+<!-- 🔥 ADD MINI AI HERE (THIS EXACT SPOT) -->
+<div class="mini-ai">
 
+  <textarea id="mini-log"
+    placeholder="Paste EV logs..."
+  ></textarea>
+
+  <button id="mini-run">⚡ Analyze</button>
+
+  <div class="mini-results" id="mini-results">
+    <p><b>Root:</b> <span id="mini-root">-</span></p>
+    <p><b>Impact:</b> <span id="mini-impact">-</span></p>
+    <p><b>Fix:</b> <span id="mini-fix">-</span></p>
+    <p><b>Alert:</b> <span id="mini-alert">-</span></p>
+  </div>
+
+</div>
     </div><!-- /content -->
   </main>
 </div>
@@ -1110,6 +1156,53 @@ function updateTime() {
 updateTime();
 setInterval(updateTime, 1000);
 </script>
+// 🔥 Mini AI Analyzer
+document.getElementById("mini-run").addEventListener("click", async () => {
+  const logText = document.getElementById("mini-log").value;
+  
+  if (!logText.trim()) {
+    alert("Please paste some logs first!");
+    return;
+  }
+  
+  // Show loading state
+  document.getElementById("mini-results").style.opacity = "0.5";
+  document.getElementById("mini-run").innerText = "⚡ Analyzing...";
+  document.getElementById("mini-run").disabled = true;
+  
+  try {
+    const response = await fetch("http://127.0.0.1:8000/analyze-custom", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ logs: logText })
+    });
+    
+    const data = await response.json();
+    
+    if (data.error) {
+      alert("Error: " + data.error);
+      return;
+    }
+    
+    // Update results
+    document.getElementById("mini-root").innerText = data.root_cause;
+    document.getElementById("mini-impact").innerText = `${data.vehicles} vehicles, ${data.severity}`;
+    document.getElementById("mini-fix").innerText = data.fix;
+    document.getElementById("mini-alert").innerText = data.alert;
+    
+    // Reset opacity
+    document.getElementById("mini-results").style.opacity = "1";
+    
+  } catch (error) {
+    alert("API Error: " + error.message);
+  } finally {
+    document.getElementById("mini-run").innerText = "⚡ Analyze";
+    document.getElementById("mini-run").disabled = false;
+  }
+});
+
 <script>
 function scrollToSection(id) {
   const section = document.getElementById(id);
