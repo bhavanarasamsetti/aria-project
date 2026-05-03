@@ -1,5 +1,6 @@
 import json
 import os
+import sys
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -31,7 +32,8 @@ def generate_report(log_data):
         }
     
     try:
-        from src.watsonx_client import generate_text
+        sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+        from watsonx_client import generate_text
         
         print("⚡ ARIA → Connecting to IBM watsonx.ai...")
         
@@ -90,14 +92,16 @@ Required JSON format:
 
 def analyze():
     log_data = read_file("data/ev_battery_issue.txt")
-
+    
     print("=== RAW LOG ===\n")
     print(log_data)
-
+    
     print("\n=== ARIA OUTPUT ===\n")
     report = generate_report(log_data)
-    print(report)
+    print(json.dumps(report, indent=2))
 
 
 if __name__ == "__main__":
     analyze()
+
+# Made with Bob
