@@ -1,0 +1,11 @@
+# Problem & Solution Statement
+
+Electric vehicles (EVs) rely heavily on battery management systems (BMS) for safe and efficient operation. However, firmware updates and calibration errors can introduce critical failures that are difficult to detect in real time. In large EV fleets, even a small anomaly—such as incorrect state-of-charge (SOC) calculation or voltage imbalance—can rapidly escalate into widespread issues affecting thousands of vehicles. These failures can lead to sudden battery drops, charging inefficiencies, overheating risks, and potential vehicle breakdowns, ultimately impacting user safety and operational reliability.
+
+Currently, identifying such failures requires manual log analysis and delayed investigation, which increases response time and risk. There is a need for an intelligent system that can automatically detect, analyze, and respond to EV battery anomalies in real time.
+
+To address this, we built **ARIA (AI-powered Root-cause Intelligence Agent)** — a smart monitoring and analysis system for EV battery incidents. ARIA continuously processes battery logs and detects anomalies such as sudden drops in battery levels, abnormal temperature spikes, and imbalance across battery cells. Once an anomaly is detected, ARIA performs automated root cause analysis and generates actionable insights, including the probable cause, affected vehicles, severity level, recommended fixes, and validation tests.
+
+The system integrates a backend analysis engine with an interactive dashboard that visualizes battery behavior, highlights anomaly points, and presents AI-generated diagnostics in a structured format. This enables engineers and operators to quickly understand the issue and take corrective actions.
+
+By reducing detection time from hours to minutes, ARIA significantly improves incident response efficiency. It enhances fleet reliability, reduces operational risks, and provides a scalable solution for managing EV battery health in real-world deployments.

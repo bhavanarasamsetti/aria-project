@@ -1,0 +1,11 @@
+# Technology Usage Statement
+
+This project leverages IBM Bob and IBM watsonx.ai to design, build, and power the ARIA (AI-powered Root-cause Intelligence Agent) system for EV battery failure analysis.
+
+IBM Bob was used extensively during development to accelerate coding, debugging, and system design. It assisted in generating backend logic using FastAPI, structuring APIs, refining anomaly detection workflows, and improving the overall architecture of the system. Bob also helped simulate EV battery failure scenarios and generate structured diagnostic outputs such as root cause analysis, impact assessment, recommended fixes, and validation strategies.
+
+In addition, the project integrates IBM watsonx.ai using the Llama model (meta-llama/llama-3-3-70b-instruct) to enable AI-driven log analysis. The model processes EV battery logs and produces structured insights in JSON format, including summary, root cause, impact, fix recommendations, and alerts. This allows the system to move beyond simple monitoring and provide intelligent, actionable insights in real time.
+
+The backend is built using FastAPI and handles log ingestion, analysis, and API responses. The frontend is a responsive HTML/CSS dashboard that visualizes battery behavior, anomaly detection, and AI-generated insights. The system is modular and designed to be scalable for real-time fleet monitoring.
+
+By combining IBM Bob for development and IBM watsonx.ai with the Llama model for intelligent analysis, the project achieves rapid development, high-quality code generation, and advanced AI-powered diagnostics. This significantly reduces manual effort and enables faster, more accurate detection and resolution of EV battery failures.
