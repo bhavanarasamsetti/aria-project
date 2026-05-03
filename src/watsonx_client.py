@@ -34,7 +34,7 @@ def generate_text(prompt):
                 "temperature": 0.7,
                 "stop_sequences": []
             },
-            "model_id": os.getenv("WATSONX_MODEL_ID", "ibm/granite-13b-instruct-v2"),
+            "model_id": os.getenv("WATSONX_MODEL_ID", "meta-llama/llama-3-3-70b-instruct"),
             "project_id": project_id
         }
         
